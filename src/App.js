@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/navbar";
-import { SignIn } from './pages/signin';
-import { Register } from "./pages/register";
-import { Shop } from "./pages/shop/shop";
-import { Contact } from "./pages/contact";
-import { Cart } from "./pages/cart/cart";
+import { BrowserRouter as Router, } from "react-router-dom";
 import { ShopContextProvider } from "./context/shop-context";
-import { Searchpage } from "./pages/shop/searchpage";
+import Main from './Main'; // Import the new Main component
 
 function App() {
   const [results, setResults] = useState([]);
@@ -18,23 +12,7 @@ function App() {
     <div className="App">
       <ShopContextProvider>
         <Router>
-          <Navbar setResults={setResults} setIsSearchPerformed={setIsSearchPerformed} />
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                isSearchPerformed ? (
-                  <Searchpage results={results} />
-                ) : (
-                  <Shop />
-                )
-              } 
-            />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
+          <Main setResults={setResults} setIsSearchPerformed={setIsSearchPerformed} results={results} isSearchPerformed={isSearchPerformed} />
         </Router>
       </ShopContextProvider>
     </div>
