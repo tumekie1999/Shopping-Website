@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { SignIn } from './pages/signin';
+import { Register } from "./pages/register";
 import { Shop } from "./pages/shop/shop";
 import { Contact } from "./pages/contact";
 import { Cart } from "./pages/cart/cart";
@@ -30,6 +31,7 @@ function App() {
               } 
             />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
